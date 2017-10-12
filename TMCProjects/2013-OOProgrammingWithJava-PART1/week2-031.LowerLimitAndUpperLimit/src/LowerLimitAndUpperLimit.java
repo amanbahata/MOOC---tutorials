@@ -8,5 +8,21 @@ public class LowerLimitAndUpperLimit {
 
         // write your code here
 
+        System.out.print("First: ");
+        int first = Integer.parseInt(reader.next());
+        System.out.print("Last: ");
+        int last = Integer.parseInt(reader.next());
+
+        int i = first;
+
+        while (i <= last){
+            System.out.println(i);
+            i++;
+        }
+
+
+
+
+
     }
 }
