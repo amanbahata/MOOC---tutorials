@@ -7,20 +7,24 @@ public class GuessingNumberGame {
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
         int numberDrawn = drawNumber();
-        int input;
+
         // program your solution here. Do not touch the above lines!
+
+        int input;
+        int guessCounter = 1;
 
         do {
             System.out.print("Guess a number: ");
             input = Integer.parseInt(reader.nextLine());
 
             if (input < numberDrawn) {
-                System.out.println("The number is greater");
+                System.out.print("The number is greater, guesses made: " + guessCounter);
             } else if (input == numberDrawn) {
-                System.out.println("Congratulations, your guess is correct!");
+                System.out.print("Congratulations, your guess is correct!");
             } else {
-                System.out.println("The number is lesser");
+                System.out.print("The number is lesser, guesses made: " + guessCounter);
             }
+            guessCounter ++;
         }while (input != numberDrawn);
     }
 
