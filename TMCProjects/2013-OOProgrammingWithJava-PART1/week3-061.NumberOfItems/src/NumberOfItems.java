@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NumberOfItems {
@@ -11,7 +12,11 @@ public class NumberOfItems {
         list.add("Hello");
         System.out.println("There are this many items on the list:");
         // You can remove the comment from below when the method is done
-        //System.out.println(countItems(list)); 
+        System.out.println(countItems(list));
+    }
+
+    public static int countItems(ArrayList<String> list){
+        return list.size();
     }
 
 }
