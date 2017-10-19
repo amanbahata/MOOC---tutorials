@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LengthsOfStrings {
     public static ArrayList<Integer> lengths(ArrayList<String> list) {
         ArrayList<Integer> lengthList = new ArrayList<Integer>();
-        // write code here
-        
+
+        for (String item : list) {
+            lengthList.add(item.length());
+        }
         return lengthList;
     }
 
