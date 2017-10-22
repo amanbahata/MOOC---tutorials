@@ -4,7 +4,7 @@ import java.util.function.BinaryOperator;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         Scanner reader = new Scanner(System.in);
         // write here code to ensure that BoundedCounter works as expected
         // before starting 78.3 remove the extra code and use the skeleton shown
@@ -26,8 +26,10 @@ public class Main {
 
 
         int i = 0;
-        while (i < 121){
+       // while (i < 121){
+        while(true){
             System.out.println(hours + ":" + minutes + ":" + seconds);
+            Thread.sleep(1000);
             seconds.next();
             if (seconds.getValue() == 0) {
                 minutes.next();
