@@ -4,6 +4,8 @@ public class Main {
 
         counter.printValue();
         counter.decrease();
+        counter.printValue();
         counter.decrease();
+        counter.printValue();
     }
 }
