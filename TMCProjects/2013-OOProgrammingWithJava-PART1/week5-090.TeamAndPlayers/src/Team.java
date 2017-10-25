@@ -19,7 +19,7 @@ public class Team {
     }
 
     public void addPlayer(Player player){
-        if (list.size() <= teamSize) {
+        if (list.size() <= teamSize - 1) {
             list.add(player);
         }
     }
