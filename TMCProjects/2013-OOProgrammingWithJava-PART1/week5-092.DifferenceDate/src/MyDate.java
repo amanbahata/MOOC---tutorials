@@ -3,9 +3,9 @@ public class MyDate {
     private int month;
     private int year;
 
-    public MyDate(int day, int montd, int year) {
+    public MyDate(int day, int month, int year) {
         this.day = day;
-        this.month = montd;
+        this.month = month;
         this.year = year;
     }
 
@@ -29,5 +29,19 @@ public class MyDate {
 
         return false;
     }
+
+    public int differenceInYears(MyDate comparedDate) {
+        int thisDate = convertToDate(this);
+        int otherDate = convertToDate(comparedDate);
+
+        int differenceInDates = Math.abs(thisDate - otherDate);
+        return differenceInDates / 360;
+    }
+
+    public int convertToDate(MyDate date){
+        int inDate = date.day + date.month * 30 + date.year * 12 * 30;
+        return inDate;
+    }
+
 
 }
