@@ -13,7 +13,7 @@ public class BirdwatchersDatabase {
         if (list.contains(bird)){
             System.out.println("Bird already exists in the database.");
         }else{
-            list.add(bird);
+            this.list.add(bird);
         }
 
     }
