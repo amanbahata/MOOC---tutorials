@@ -9,13 +9,13 @@ public class Main {
     }
 
     public static void addSuitcasesFullOfBricks(Container container){
-        int brickWeight = 1;
-        for (int i = 1; i <= 100; i++){
-            Thing brick = new Thing("brick", brickWeight);
-            Suitcase suitcase = new Suitcase(50);
+
+        // adding 100suitcases with one brick in each
+        for (int i = 0; i < 100; i++){
+            Thing brick = new Thing("brick", i+1);
+            Suitcase suitcase = new Suitcase(101);
             suitcase.addThing(brick);
             container.addSuitcase(suitcase);
-            brickWeight++;
         }
     }
 
