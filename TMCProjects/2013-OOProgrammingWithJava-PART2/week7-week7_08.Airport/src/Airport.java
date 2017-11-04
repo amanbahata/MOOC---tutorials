@@ -4,16 +4,17 @@ import java.util.Scanner;
 
 public class Airport {
 
-    private Scanner reader;
     private String airportCode;
-    private HashMap<Flight, Airplane> list;
-    private ArrayList<Airplane> airplanes;
+    private HashMap<String, Flight> flightList;
+    private HashMap<String, Airplane> airplaneList;
 
-    public Airport(String airportCode, Scanner reader){
+
+    public Airport(String airportCode){
         this.airportCode = airportCode.toUpperCase();
-        this.reader = reader;
-        this.list = new HashMap<Flight, Airplane>();
-        this.airplanes = new ArrayList<Airplane>();
+        this.flightList = new HashMap<String, Flight>();
+        this.airplaneList = new HashMap<String, Airplane>();
+
+
     }
 
     public String getAirportCode() {
@@ -33,49 +34,48 @@ public class Airport {
 
         while (loopControl) {
 
-            System.out.print("Choose an operation: ");
-            System.out.print("[1] add airplane");
-            System.out.print("[2] add flight");
-            System.out.print("[x] Exit");
+            System.out.println("Choose an operation: ");
+            System.out.println("[1] add airplane");
+            System.out.println("[2] add flight");
+            System.out.println("[x] Exit");
             System.out.print("> ");
             userInput = reader.nextLine();
 
             if (userInput.equals("1")){
                 System.out.print("Give plane ID: ");
                 planeId = reader.nextLine();
-                System.out.println("Give plane capacity");
+                System.out.print("Give plane capacity: ");
                 int planeCapacity = Integer.parseInt(reader.nextLine());
 
                 Airplane airplane = new Airplane(planeId, planeCapacity);
+                airplaneList.put(airplane.getId(), airplane);
 
-                if (!(airplanes.contains(airplane))){
-                    airplanes.add(airplane);
-                }
 
             }else if (userInput.equals("2")){
                 System.out.print("Give plane ID: ");
                 planeId = reader.nextLine();
-                System.out.println("Give departure airport code: ");
+                System.out.print("Give departure airport code: ");
                 String departureAirportCode = reader.nextLine();
-                System.out.println("Give destination airport code: ");
+                System.out.print("Give destination airport code: ");
                 String destinationAirportCode = reader.nextLine();
 
-                for (Airplane airplane : airplanes) {
-                    if (airplane.getId().equals(planeId)){
-                        Airport departureAirport = new Airport(departureAirportCode, reader);
-                        Airport destinationAirport  = new Airport(destinationAirportCode, reader);
-                        Flight flight = new Flight(airplane,departureAirport, destinationAirport);
-                        addTolList(airplane, flight);
-                    }
+                if (this.airplaneList.containsKey(planeId)){
+                    Flight flight = new Flight(airplaneList.get(planeId),
+                            new Airport(departureAirportCode), new Airport(destinationAirportCode));
+                    this.flightList.put(planeId, flight);
+                }else{
+                    System.out.println("Please add airplane first !");
+                    System.out.println();
                 }
             }else if(userInput.equals("x")){
                 loopControl = false;
             }
         }
+        System.out.println();
     }
 
 
-    private void startFlightService(){
+    public void startFlightService(Scanner reader){
         boolean loopControl = true;
         String userInput;
 
@@ -86,27 +86,35 @@ public class Airport {
 
         while (loopControl) {
 
-            System.out.print("Choose an operation: ");
-            System.out.print("[1] Print planes");
-            System.out.print("[2] Print flights");
-            System.out.print("[x] Exit");
+            System.out.println("Choose an operation: ");
+            System.out.println("[1] Print planes");
+            System.out.println("[2] Print flights");
+            System.out.println("[3] Print plane info");
+            System.out.println("[x] Exit");
             System.out.print("> ");
             userInput = reader.nextLine();
+            System.out.println();
 
             if (userInput.equals("1")){
-                for (Airplane airplane : airplanes) {
-                    System.out.println(airplane);
+                for (Object value : airplaneList.values()) {
+                    System.out.println(value);
                 }
             }else if(userInput.equals("2")){
-                for (Airplane airplane : airplanes) {
-                    System.out.println(airplane, );
+                for (Object value : airplaneList.values()) {
+                    Airplane airplane = (Airplane) value;
+
+                    System.out.print(airplane + " ");
+                    System.out.println(flightList.get(airplane.getId()));
+                    
                 }
+            }else if(userInput.equals("3")){
+
+                System.out.println("Nothing happens" );
+
+            }else if(userInput.equals("x")){
+                loopControl = false;
             }
         }
 
-    }
-
-    private void addTolList(Airplane airplane, Flight flight){
-        this.list.put(flight, airplane);
     }
 }

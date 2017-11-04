@@ -14,6 +14,6 @@ public class Airplane {
     }
 
     public String toString() {
-        return id + " (" + capacity + ")";
+        return id + " (" + capacity + " ppl)";
     }
 }
