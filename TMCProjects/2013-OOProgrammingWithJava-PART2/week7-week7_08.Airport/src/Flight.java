@@ -1,28 +1,22 @@
 public class Flight {
 
-    private Airplane airplane;
-    private Airport departureAirport;
-    private Airport destinationAirport;
+    private String departureAirport;
+    private String destinationAirport;
 
-    public Flight(Airplane airplane, Airport departureAirport, Airport destinationAirport){
-        this.airplane = airplane;
+    public Flight(String departureAirport, String destinationAirport){
         this.departureAirport = departureAirport;
         this.destinationAirport = destinationAirport;
     }
 
-    public Airplane getAirplane() {
-        return airplane;
-    }
-
-    public Airport getDepartureAirport() {
+    public String getDepartureAirport() {
         return departureAirport;
     }
 
-    public Airport getDestinationAirport() {
+    public String getDestinationAirport() {
         return destinationAirport;
     }
 
     public String toString(){
-        return airplane.toString() + " (" + departureAirport + "-" + destinationAirport + ")";
+        return "(" + departureAirport + "-" + destinationAirport + ")";
     }
 }
